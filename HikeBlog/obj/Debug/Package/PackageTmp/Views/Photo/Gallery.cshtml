@@ -1,0 +1,291 @@
+﻿@using HikeBlog.Views
+@model HikeBlog.Models.GalleryViewModel
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>gallery</title>
+	<script src="../../Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+	<script src="../../Scripts/jquery.masonry.min.js" type="text/javascript"></script>
+	<script src="../../Scripts/qtip/jquery.qtip.js" type="text/javascript"></script>
+	<link href="../../Scripts/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+		{
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+			margin: 0;
+			padding: 0;
+		}
+		
+		body
+		{
+			background-color: #2E3638;
+			font-family: Trebuchet MS, sans-serif;
+			text-align: center;
+		}
+		
+		a
+		{
+			color: #4F2B2B;
+		}
+		a:hover
+		{
+			color: #9CA65F;
+		}
+		
+		#container
+		{
+			background-color: #2E3638;
+			margin: auto;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		#header
+		{
+			font-size: 1.5em;
+			font-weight: bold;
+			margin: 5px;
+		}
+		
+		#spinner
+		{
+			margin: 10px;
+		}
+		
+		#photos
+		{
+			background-color: #FFFFFF;
+			margin: 0px auto;
+			padding: 5px;
+			text-align: left;
+		}
+		
+		#back
+		{
+			margin: 5px 10px;
+		}
+		
+		.item, .item masonry-brick
+		{
+			background-color: #EFEEEC;
+			border: 1px solid #9E9A8E; /*border-radius: 2px;
+			-moz-border-radius: 2px;*/
+			margin: 5px;
+			padding: 2px 2px 2px 2px;
+		}
+		
+		.item a
+		{
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		.imgSmall
+		{
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		.ui-tooltip-flickr
+		{
+			border: 1px solid #262619;
+			color: #262619;
+			max-width: 700px;
+		}
+		
+		.ui-tooltip-flickr
+		{
+			background-color: #FFFFFF;
+		}
+		
+		.ui-tooltip-flickr .ui-tooltip-titlebar
+		{
+			background-color: #FFFFFF;
+			color: #262619;
+			font-weight: normal;
+		}
+		
+		.ui-tooltip-flickr .ui-tooltip-title
+		{
+			padding: 5px 0 0 10px;
+			text-align: left;
+		}
+		
+		.ui-tooltip-flickr img
+		{
+			border-style: none;
+			border: 1px solid #262619;
+			margin: 10px;
+		}
+
+		#pager
+		{
+			color:#FFFFFF;
+			font-size:1.1em;
+			font-weight:bold;
+		}
+
+		#pager a
+		{
+			color: #FFFFFF;
+			font-size:1.1em;
+			font-weight:bold;
+			margin:5px;
+		}
+		#pager a:hover
+		{
+			color: #9CA65F;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="photos">
+			<div id="header" class="corner-stamp">
+				Gallery: @Model.Photoset.Title
+				<div style="float: right; font-size: 0.7em; vertical-align: bottom;">@Html.ActionLink("< Back to blog", "Post", "Blog", new { id = Model.PostID }, new { })</div>
+			</div>
+			<div id="spinner">
+				<img src="~/Content/images/spinner.gif" alt="Loading..." />
+			</div>
+			@foreach (FlickrNet.Photo photo in Model.Photos)
+   {
+				<div class="item" style="display: none;">
+					<a href="@photo.WebUrl" target="_blank">
+						<img class="imgSmall" src="@photo.Small320Url" alt="@photo.Title" />
+					</a>
+					<input type="hidden" class="hidden" value="@photo.Medium640Url" />
+				</div>
+   }
+		</div>
+		<div id="pager">
+			@if (Model.Photos.HasPreviousPage)
+ {
+				@Html.ActionLink("<<", "Gallery", new { page = 1, id = Model.PhotosetID, postID = Model.PostID })
+				@Html.Raw(" ");
+				@Html.ActionLink("<", "Gallery", new { page = Model.Photos.PageNumber - 1, id = Model.PhotosetID, postID = Model.PostID })	
+ }
+ Page @Model.Photos.PageNumber of @Model.Photos.PageCount&nbsp;
+			@if (Model.Photos.HasNextPage)
+ {
+				@Html.ActionLink(">", "Gallery", new { page = Model.Photos.PageNumber + 1, id = Model.PhotosetID, postID = Model.PostID })
+				@Html.Raw(" ")
+				@Html.ActionLink(">>", "Gallery", new { page = Model.Photos.PageCount, id = Model.PhotosetID, postID = Model.PostID })
+ }
+		</div>
+	</div>
+	<script type="text/javascript" language="javascript">
+		// Masonry corner stamp modifications
+		$.Mason.prototype.resize = function () {
+			this._getColumns();
+			this._reLayout();
+		};
+
+		$.Mason.prototype._reLayout = function (callback) {
+			var freeCols = this.cols;
+			if (this.options.cornerStampSelector) {
+				var $cornerStamp = this.element.find(this.options.cornerStampSelector),
+          cornerStampX = $cornerStamp.offset().left -
+            (this.element.offset().left + this.offset.x + parseInt($cornerStamp.css('marginLeft')));
+				freeCols = Math.floor(cornerStampX / this.columnWidth);
+			}
+			// reset columns
+			var i = this.cols;
+			this.colYs = [];
+			while (i--) {
+				this.colYs.push(this.offset.y);
+			}
+
+			for (i = freeCols; i < this.cols; i++) {
+				this.colYs[i] = this.offset.y + $cornerStamp.outerHeight(true);
+			}
+
+			// apply layout logic to all bricks
+			this.layout(this.$bricks, callback);
+		};
+
+		$(document).ready(function () {
+
+			$('#photos').imagesLoaded(function () {
+				// hide spinner
+				$("#spinner").hide();
+
+				// show photos
+				$(".item").show();
+
+				// do the masonry layout
+				$('#photos').masonry({
+					itemSelector: '.item',
+					isFitWidth: true,
+					cornerStampSelector: '.corner-stamp'
+				}); // end masonry
+
+			}); // end imagesLoaded function
+
+			// add the tooltip function to the images
+			$('.imgSmall').each(function () {
+				var thumb = $(this).attr('src'), full, content;
+
+				// get the URL to the larger image from the hidden field
+				full = $(this).parent().parent().children('.hidden:first').val();
+
+				// Create the fullsize image with a link
+				content = $('<a />', {
+					href: $(this).parent().attr('href'),
+					target: '_blank'
+				})
+		.append($('<img />', { src: full }));
+
+				// Create the tooltip
+				$(this).qtip({
+					content: {
+						text: content,
+						title: {
+							text: $(this).attr('alt') // Use the image ALT text for the title
+						}
+					},
+					position: {
+						my: 'center',
+						at: 'center',
+						viewport: $(window),
+						adjust: {
+							screen: true
+						}
+					},
+					hide: {
+						fixed: true
+					},
+					style: {
+						classes: 'ui-tooltip-gallery ui-tooltip-flickr'
+					},
+					events: {
+						render: function (event, api) {
+							$(this).css('position', 'fixed');
+							$(this).css('left', (($(window).width() - $(this).outerWidth()) / 2 + $(document).scrollLeft()));
+							$(this).css('top', (($(window).width() - $(this).outerHeight()) / 2 + $(document).scrollTop()));
+						} // end render
+					} // end events
+				}); // end qTip
+			}); // end $('.item').each
+
+			var photos = $.parseJSON('@Model.ToJSON()');
+
+			// preload each large photo
+			$.each(photos, function (index, obj) {
+				if (typeof (obj.Medium640Url) !== 'undefined') {
+					$('<img />').attr('src', obj.Medium640Url).appendTo('body').css('display', 'none');
+				}
+			}); // end preload photos
+
+		});           // end document ready
+	</script>
+</body>
+</html>

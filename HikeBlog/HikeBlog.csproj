@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0EDC7B14-F6AC-465C-9EFD-EF1BB443E82D}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HikeBlog</RootNamespace>
+    <AssemblyName>HikeBlog</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FlickrNet, Version=3.4.0.0, Culture=neutral, PublicKeyToken=2491df59efa5d132, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlickrNet.3.4.0\lib\net20\FlickrNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.15.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Json.4.0.20126.16343\lib\net40\System.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Net.Http.Formatting.4.0.20126.16343\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetWebPages.Core.2.0.20126.16343\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetWebApi.Core.4.0.20126.16343\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetWebApi.4.0.20126.16343\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetMvc.4.0.20126.16343\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.Web.Optimization.1.0.0-beta\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\System.Web.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetRazor.Core.2.0.20126.16343\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetWebPages.Core.2.0.20126.16343\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetWebPages.Core.2.0.20126.16343\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\AspNetWebPages.Core.2.0.20126.16343\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ForecastController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\WeekendForecastViewModel.cs" />
+    <Compile Include="DAL\BlogDbContext.cs" />
+    <Compile Include="DAL\DbInitializer.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Forecast.cs" />
+    <Compile Include="Models\GalleryViewModel.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\JsonHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\PortalGroup.jpg" />
+    <Content Include="Content\images\WhitneySummitGroup.jpg" />
+    <Content Include="Content\images\cascade.jpg" />
+    <Content Include="Content\images\NoaaIcons\bkn.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard10.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard100.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard20.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard30.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard40.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard50.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard60.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard70.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard80.jpg" />
+    <Content Include="Content\images\NoaaIcons\blizzard90.jpg" />
+    <Content Include="Content\images\NoaaIcons\br.jpg" />
+    <Content Include="Content\images\NoaaIcons\cold.jpg" />
+    <Content Include="Content\images\NoaaIcons\du.jpg" />
+    <Content Include="Content\images\NoaaIcons\dust.jpg" />
+    <Content Include="Content\images\NoaaIcons\few.jpg" />
+    <Content Include="Content\images\NoaaIcons\fg.jpg" />
+    <Content Include="Content\images\NoaaIcons\fu.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\fzrara.jpg" />
+    <Content Include="Content\images\NoaaIcons\hazy.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_bkn.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_few.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nbkn.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nfew.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nsct.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs10.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs100.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs20.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs30.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs40.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs50.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs60.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs70.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs80.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nshwrs90.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_nskc.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_ntsra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_sct.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs10.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs100.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs20.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs30.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs40.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs50.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs60.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs70.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs80.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_shwrs90.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_skc.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\hi_tsra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\hot.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip10.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip100.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip20.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip30.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip40.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip50.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip60.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip70.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip80.jpg" />
+    <Content Include="Content\images\NoaaIcons\ip90.jpg" />
+    <Content Include="Content\images\NoaaIcons\mist.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix10.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix100.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix20.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix30.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix40.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix50.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix60.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix70.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix80.jpg" />
+    <Content Include="Content\images\NoaaIcons\mix90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nbkn.jpg" />
+    <Content Include="Content\images\NoaaIcons\nfew.jpg" />
+    <Content Include="Content\images\NoaaIcons\nfg.jpg" />
+    <Content Include="Content\images\NoaaIcons\nmix.jpg" />
+    <Content Include="Content\images\NoaaIcons\novc.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\nra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip10.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip100.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip20.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip30.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip40.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip50.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip60.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip70.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip80.jpg" />
+    <Content Include="Content\images\NoaaIcons\nraip90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn10.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn100.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn20.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn30.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn40.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn50.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn60.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn70.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn80.jpg" />
+    <Content Include="Content\images\NoaaIcons\nrasn90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsct.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\nscttsra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\nshra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nskc.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn10.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn100.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn20.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn30.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn40.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn50.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn60.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn70.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn80.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsn90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nsvrtsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\ntsra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\nwind.jpg" />
+    <Content Include="Content\images\NoaaIcons\ovc.jpg" />
+    <Content Include="Content\images\NoaaIcons\pcloudy.jpg" />
+    <Content Include="Content\images\NoaaIcons\question.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra1.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\ra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip10.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip100.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip20.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip30.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip40.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip50.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip60.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip70.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip80.jpg" />
+    <Content Include="Content\images\NoaaIcons\raip90.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn10.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn100.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn20.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn30.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn40.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn50.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn60.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn70.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn80.jpg" />
+    <Content Include="Content\images\NoaaIcons\rasn90.jpg" />
+    <Content Include="Content\images\NoaaIcons\sct.jpg" />
+    <Content Include="Content\images\NoaaIcons\sctfg.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\scttsra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra2.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\shra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\skc.jpg" />
+    <Content Include="Content\images\NoaaIcons\smoke.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn10.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn100.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn20.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn30.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn40.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn50.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn60.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn70.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn80.jpg" />
+    <Content Include="Content\images\NoaaIcons\sn90.jpg" />
+    <Content Include="Content\images\NoaaIcons\tcu.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra10.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra100.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra20.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra30.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra40.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra50.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra60.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra70.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra80.jpg" />
+    <Content Include="Content\images\NoaaIcons\tsra90.jpg" />
+    <Content Include="Content\images\NoaaIcons\wind.jpg" />
+    <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\spinner.gif" />
+    <Content Include="Content\images\UsRainier.jpg" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-ui-1.9.1.custom.js" />
+    <Content Include="Scripts\jquery.masonry.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.0.0.debug.js" />
+    <Content Include="Scripts\knockout-2.0.0.js" />
+    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\qtip\jquery.qtip.css" />
+    <Content Include="Scripts\qtip\jquery.qtip.js" />
+    <Content Include="Scripts\qtip\jquery.qtip.min.css" />
+    <Content Include="Scripts\qtip\jquery.qtip.min.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\langs\en.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\license.txt" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\plugins\preview\editor_plugin.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\plugins\preview\example.html" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\plugins\preview\jscripts\embed.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\plugins\preview\preview.html" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\about.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\anchor.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\charmap.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\color_picker.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\editor_template.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\image.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\colorpicker.jpg" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\flash.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\icons.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\iframe.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\pagebreak.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\quicktime.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\realmedia.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\shockwave.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\trans.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\video.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\img\windowsmedia.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\about.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\anchor.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\charmap.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\color_picker.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\image.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\link.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\js\source_editor.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\langs\en.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\langs\en_dlg.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\link.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\shortcuts.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\content.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\dialog.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\img\buttons.png" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\img\items.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\img\menu_arrow.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\img\menu_check.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\img\progress.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\img\tabs.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\default\ui.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\highcontrast\content.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\highcontrast\dialog.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\highcontrast\ui.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\content.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\dialog.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_black.png" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\img\button_bg_silver.png" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\ui_black.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\skins\o2k7\ui_silver.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\advanced\source_editor.htm" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\editor_template.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\img\icons.gif" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\langs\en.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\skins\default\content.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\skins\default\ui.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\skins\o2k7\content.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\skins\o2k7\img\button_bg.png" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\themes\simple\skins\o2k7\ui.css" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\tiny_mce.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\tiny_mce_popup.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\utils\editable_selects.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\utils\form_utils.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\utils\mctabs.js" />
+    <Content Include="Scripts\tinymce\jscripts\tiny_mce\utils\validate.js" />
+    <Content Include="Scripts\tn3\js\jquery.tn3lite.min.js" />
+    <Content Include="Scripts\tn3\license.txt" />
+    <Content Include="Scripts\tn3\skins\tn3\bg.png" />
+    <Content Include="Scripts\tn3\skins\tn3\preloadalt.gif" />
+    <Content Include="Scripts\tn3\skins\tn3\preload.gif" />
+    <Content Include="Scripts\tn3\skins\tn3\tbg.png" />
+    <Content Include="Scripts\tn3\skins\tn3\tbg2.png" />
+    <Content Include="Scripts\tn3\skins\tn3\tn3.css" />
+    <Content Include="Scripts\tn3\skins\tn3\tn3.html" />
+    <Content Include="Scripts\tn3\skins\tn3\tn3.png" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
+    <Folder Include="HtmlBlogs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forecast\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\India.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\Denmark.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\Croatia.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\Egypt.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Post\Djibouti.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forecast\WeekendForecast.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FlickrNet.chm" />
+    <None Include="Scripts\tinymce\readme.md" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Photo\Set.cshtml" />
+    <Content Include="Views\Comment\Details.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\Blog\Post.cshtml" />
+    <Content Include="Views\Shared\_AboutLayout.cshtml" />
+    <Content Include="Views\Photo\Gallery.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PhotosetsForPost.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55364</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

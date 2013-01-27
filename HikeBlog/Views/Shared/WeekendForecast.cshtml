@@ -1,0 +1,29 @@
+﻿@model HikeBlog.Controllers.WeekendForecastViewModel
+<div>
+	<table class="weather" cellpadding="0" cellspacing="0">
+		<tr>
+			<th></th>
+			@foreach (var date in Model.ForecastDates)
+   {
+	   <th colspan="2">
+			@Html.DisplayFor(d => date)
+	   </th>
+   }
+		</tr>
+		@foreach (var location in Model.Locations)
+  {	
+			<tr>
+				<td class="weatherLink">
+					<a class="weatherLink" href="@location.MoreWeatherInformationUrl" target="_blank">
+						@Html.DisplayFor(modelItem => location.Name)</a>
+				</td>
+				@foreach (var forecast in location.DailyForecasts)
+	{
+					<td style="padding: 0px;">
+						<img class="noaaIcon" src="@forecast.ImageFile" alt="@forecast.WeatherSummary" />
+					</td>
+	}
+			</tr>
+  }
+	</table>
+</div>

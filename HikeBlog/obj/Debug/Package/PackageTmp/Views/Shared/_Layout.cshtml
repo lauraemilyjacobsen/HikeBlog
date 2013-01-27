@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+@{
+	if (String.IsNullOrWhiteSpace(ViewBag.CurrentSearch)) { ViewBag.CurrentSearch = "Search"; }
+}
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+	<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
+	<!--<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")" type="text/javascript"></script>-->
+	<link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+	<script src="../../Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+	<script src="../../Scripts/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
+	<script src="../../Scripts/qtip/jquery.qtip.js" type="text/javascript"></script>
+	<script src="../../Scripts/tn3/js/jquery.tn3lite.min.js" type="text/javascript"></script>
+	<link href="../../Scripts/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+	<link href="../../Scripts/tn3/skins/tn3/tn3.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<a href="~/Blog/Index">
+				<img src="~/Content/images/cascade.jpg" alt="Laura Emily Jacobsen" /></a>
+		</div>
+		<div id="caption">
+			I LIKE MAKING THINGS AND GOING PLACES.
+		</div>
+		<div id="main">
+			@RenderBody()
+		</div>
+		<div id="sidebar">
+			@using (Html.BeginForm("Index", "Blog", FormMethod.Get, new { @class = "search" }))
+   {
+				@Html.TextBox("q", ViewBag.CurrentSearch as string, new { @class = "searchBoxGray" })
+				<input id="qImg" type="image" src="/Content/images/search.png" alt="Search" name="search" />
+
+   }
+			<div id="weather">
+				<div id="weatherContent">
+					<p id="weatherloading" style="text-align: center; padding: 10px;">
+						<img src="~/Content/images/spinner.gif" alt="Loading..." />
+					</p>
+				</div>
+			</div>
+			<div id="synths">
+				<div id="synthsHeader">
+					Photosynths</div>
+				<div id="synthsContent">
+					<ul>
+						<li><a href="http://photosynth.net/view.aspx?cid=92919e21-c9f4-4ed9-9423-b5cdec3805a4&m=false&i=0:0:0&c=0:0:0&z=486.016640483346&d=-1.27534796867842:-1.00981565293233:-1.05374365569628&p=0:0&t=False"
+							target="_blank">Lake Ann</a></li>
+						<li><a href="http://photosynth.net/view.aspx?cid=b0b19993-2e8b-433d-a1ad-2c3a69247216&m=false&i=0:0:0&c=0:0:0&z=486.016640483346&d=1.63943443813551:2.72612715227501:2.01084444469217&p=0:0&t=False"
+							target="_blank">Guitar Lake</a></li>
+						<li><a href="http://photosynth.net/view.aspx?cid=6e363f90-ee28-4f7c-b1b8-398059b95b3a&m=false&i=0:0:0&c=0:0:0&z=486.016640483346&d=4.12108471501745:1.50426896450242:1.7185518006919&p=0:0&t=False"
+							target="_blank">King's-Kern Divide</a></li>
+						<li><a href="http://photosynth.net/view.aspx?cid=60e582cb-d815-4b6b-9836-36cb5a3a824a&m=false&i=0:0:0&c=0:0:0&z=486.016640483346&d=2.03143504143415:2.60626431383726:2.1601317929225&p=0:0&t=False"
+							target="_blank">Foggy Lake</a></li>
+						<li><a href="http://photosynth.net/view.aspx?cid=d3ebca2d-8e12-480a-b896-01a860839a0f&m=false&i=0:0:0&c=0:0:0&z=446&d=-1.25442691455979:-1.25442691455979:-1.1794401694891&p=0:0&t=False"
+							target="_blank">Church Mountain</a></li>
+					</ul>
+					<br />
+					<a href="http://photosynth.net/userprofilepage.aspx?user=lauraemilyjacobsen&content=Synths"
+						target="_blank">All my synths</a>
+				</div>
+			</div>
+			<div id="about">
+				<div id="aboutHeader">
+					About
+				</div>
+				<div id="aboutContent">
+					<p style="margin-bottom: 10px;">
+						I'm a software developer in Seattle. This blog is my place to record images and
+						experiences from hiking and traveling.
+					</p>
+					@Html.ActionLink("More information", "Index", "About")
+				</div>
+			</div>
+		</div>
+		<div id="clearer">
+			&nbsp;</div>
+	</div>
+	<script src="/Scripts/qtip/jquery.qtip.min.js" type="text/javascript"></script>
+	<script src="/Scripts/tn3/js/jquery.tn3lite.min.js" type="text/javascript"></script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function () {
+			// get the weather forecasts asynchronously
+			$.ajaxSetup({
+				beforeSend: function () {
+					$('#weatherloading').show();
+				},
+				complete: function () {
+					$('#weatherloading').hide();
+				},
+				error: function () {
+					$("#weather").append("<p><br />Error loading forecast.</p>");
+				}
+			});
+
+			$.get('@Url.Action("WeekendForecast", "Forecast")', function (data) {
+				$('#weather').html(data);
+
+				// initialize tooltip plugin on the weather icons.
+				$('img.noaaIcon').qtip({
+					position: {
+						my: 'top right',
+						at: 'center',
+						target: 'event'
+					},
+					style: {
+						classes: 'qTipWeather'
+					}
+				});
+			});
+
+			// determine the color of the search box starting text: gray if showing default search prompt,
+			// black if showing user input
+			if ($('#q').val() != 'Search') {
+				$('#q').removeClass('searchBoxGray');
+			}
+
+			// initialize search box
+			$('#q').click(function () {
+				if ($(this).val() == 'Search') {
+					$(this).val('');
+					$(this).removeClass('searchBoxGray');
+				}
+			});
+
+			$('#q').focusout(function () {
+				if ($(this).val() == '') {
+					$(this).val('Search');
+					$(this).addClass('searchBoxGray');
+				}
+			});
+
+			//$('#gallery').tn3();
+		});
+	</script>
+</body>
+</html>

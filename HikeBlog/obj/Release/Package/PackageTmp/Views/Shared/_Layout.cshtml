@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+@{
+	if (String.IsNullOrWhiteSpace(ViewBag.CurrentSearch)) { ViewBag.CurrentSearch = "Search"; }
+}
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+	<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
+	<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")" type="text/javascript"></script>
+	<link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+	<link href="/Scripts/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+	<link href="/Scripts/tn3/skins/tn3/tn3.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<a href="~/Blog/Index">
+				<img src="~/Content/images/cascade.jpg" alt="Laura Emily Jacobsen" /></a>
+		</div>
+		<div id="caption">
+			I LIKE MAKING THINGS AND GOING PLACES.
+		</div>
+		<div id="main">
+			@RenderBody()
+		</div>
+		<div id="sidebar">
+			@using (Html.BeginForm("Index", "Blog", FormMethod.Get, new { @class = "search" }))
+   {
+				@Html.TextBox("q", ViewBag.CurrentSearch as string, new { @class = "searchBoxGray" })
+				<input id="qImg" type="image" src="/Content/images/search.png" alt="Search" name="search" />
+
+   }
+			<div id="weather">
+				<div id="weatherContent">
+					<p id="weatherloading" style="text-align: center; padding: 10px;">
+						<img src="~/Content/images/spinner.gif" alt="Loading..." />
+					</p>
+				</div>
+			</div>
+			<div id="about">
+				<div id="aboutHeader">
+					About
+				</div>
+				<div id="aboutContent">
+					<p style="margin-bottom: 10px;">
+						I'm a software developer in Seattle. This blog is my place to record images and
+						experiences from hiking and traveling.
+					</p>
+					@Html.ActionLink("More information", "Index", "About")
+				</div>
+			</div>
+		</div>
+		<div id="clearer">
+			&nbsp;</div>
+	</div>
+	<script src="/Scripts/qtip/jquery.qtip.min.js" type="text/javascript"></script>
+	<script src="/Scripts/tn3/js/jquery.tn3lite.min.js" type="text/javascript"></script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function () {
+			// get the weather forecasts asynchronously
+			$.ajaxSetup({
+				beforeSend: function () {
+					$('#weatherloading').show();
+				},
+				complete: function () {
+					$('#weatherloading').hide();
+				},
+				error: function () {
+					$("#weather").append("<p><br />Error loading forecast.</p>");
+				}
+			});
+
+			$.get('@Url.Action("WeekendForecast", "Forecast")', function (data) {
+				$('#weather').html(data);
+
+				// initialize tooltip plugin on the weather icons.
+				$('img.noaaIcon').qtip({
+					position: {
+						my: 'top right',
+						at: 'center',
+						target: 'event'
+					},
+					style: {
+						classes: 'qTipWeather'
+					}
+				});
+			});
+
+			// determine the color of the search box starting text: gray if showing default search prompt,
+			// black if showing user input
+			if ($('#q').val() != 'Search') {
+				$('#q').removeClass('searchBoxGray');
+			}
+
+			// initialize search box
+			$('#q').click(function () {
+				if ($(this).val() == 'Search') {
+					$(this).val('');
+					$(this).removeClass('searchBoxGray');
+				}
+			});
+
+			$('#q').focusout(function () {
+				if ($(this).val() == '') {
+					$(this).val('Search');
+					$(this).addClass('searchBoxGray');
+				}
+			});
+
+			//$('#gallery').tn3();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿@using HikeBlog.Views
+@model FlickrNet.PhotosetPhotoCollection
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>gallery</title>
+	<script src="../../Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+	<script src="../../Scripts/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
+	<script src="../../Scripts/jquery.masonry.min.js" type="text/javascript"></script>
+	<link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+	<link href="../../Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="container" style="position: absolute; top: 5px; left: 5px; width: 100%">
+		@foreach (FlickrNet.Photo photo in Model)
+  {
+			<div class="item">
+				<img class="imgSmall" src="@photo.Small320Url" alt="@photo.Title" />
+				<input type="hidden" value="@photo.Medium640Url" class="hidden" />
+				<div class="dialog">
+					<img class="imgLarge" src="@photo.Medium640Url" />
+				</div>
+			</div>
+  }
+	</div>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function () {
+
+			// initialize the dialog function of the dialog divs
+			$('.dialog').dialog({
+				autoOpen: false
+			});
+
+			//alert($('.dialog').size());
+
+//			$('.item').bind("mouseenter", function (e) {
+//				$(this).children('.dialog').dialog('open');
+//				//alert($(this).children('.dialog').html());
+//				return false;
+//			});
+
+//			$('.item').bind("mouseleave", function (e) {
+//				$(this).children('.dialog').dialog('close');
+//			});
+
+			$('#container').imagesLoaded(function () {
+				// get all the photos into a JSON object
+				var photos = $.parseJSON('@Model.ToJSON()');
+
+				// preload each large photo
+				//				$.each(photos, function (index, obj) {
+				//					if (typeof (obj.Medium640Url) !== 'undefined') {
+				//						$('<img />').attr('src', obj.Medium640Url).appendTo('body').css('display', 'none');
+				//					}
+				//				}); // end preload photos
+
+				// do the masonry layout
+				$('#container').masonry({
+					itemSelector: '.item',
+					isFitWidth: true
+				}); // end masonry
+
+			}); // end imagesLoaded function
+
+			//			$('.item').hover(
+			//				// mouseenter handler
+			//				function () {
+			//					$(this).children('.dialog').dialog();
+			//				},
+			//				// mouseleave handler
+			//				function () {
+			//					$(this).children('.dialog').dialog('close');
+			//				}
+			//			); // end hover
+
+			$('.item').hoverZoom({
+				showCaption: false
+			});
+
+		});    // end document ready
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿@model HikeBlog.Controllers.WeekendForecastViewModel
+@{
+	Layout = null;
+}
+<div id="weatherHeader">
+	WA Weekend Weather
+</div>
+<div id="weatherContent">
+	Hover over an icon to see the forecast.
+	<table class="weather" cellpadding="0" cellspacing="0">
+		<tr>
+			<th class="empty">
+			</th>
+			@foreach (var date in Model.ForecastDates)
+   {
+				<th class="weatherDate">
+					@Html.DisplayFor(d => date)
+				</th>
+   }
+		</tr>
+		@foreach (var location in Model.Locations)
+  {	
+			<tr>
+				<td class="weatherLink">
+					<a class="weatherLink" href="@location.MoreWeatherInformationUrl" target="_blank">
+						@Html.DisplayFor(modelItem => location.Name)</a>
+				</td>
+				@foreach (var forecast in location.DailyForecasts)
+	{
+					<td style="padding: 0px;">
+						<img class="noaaIcon" src="@forecast.ImageFile" alt="@forecast.PeriodName:  @forecast.TextForecast" title="@forecast.PeriodName:  @forecast.TextForecast" />
+					</td>
+	}
+			</tr>
+  }
+	</table>
+	<p class="weatherBottom">
+		Weather data from <a href="http://www.weather.gov">NOAA</a></p>
+</div>

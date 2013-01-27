@@ -1,0 +1,165 @@
+﻿<dwml version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd">
+ <head>
+    <product concise-name="dwmlByDay" operational-mode="developmental" srsName="WGS 1984">
+      <creation-date refresh-frequency='PT1H'>2012-05-18T14:49:27-07:00</creation-date>
+     <category>current observations and forecast</category>
+    </product>
+    <source>
+      <production-center>Seattle, WA</production-center>
+      <credit>http://www.wrh.noaa.gov/sew</credit>
+      <more-information>http://www.nws.noaa.gov/forecasts/xml/</more-information>
+    </source>
+  </head>
+  <data type="forecast">
+
+  <location>
+    <location-key>point1</location-key>
+    <point latitude="48.84" longitude="-121.7"/>
+    <area-description>7 Miles NE Mt Baker WA</area-description>
+    <height datum="mean sea level" height-units="feet">4602</height>
+  </location>
+<moreWeatherInformation applicable-location="point1">http://forecast.weather.gov/MapClick.php?lat=48.84&amp;lon=-121.7</moreWeatherInformation>
+  <time-layout time-coordinate="local" summarization="12hourly">
+    <layout-key>k-p12h-n14-1</layout-key>
+      <start-valid-time period-name="Today">2012-05-20T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Tonight">2012-05-20T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Monday">2012-05-21T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Monday Night">2012-05-21T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Tuesday">2012-05-22T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Tuesday Night">2012-05-22T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Wednesday">2012-05-23T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Wednesday Night">2012-05-23T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Thursday">2012-05-24T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Thursday Night">2012-05-24T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Friday">2012-05-25T06:00:00-07:00</start-valid-time>
+  </time-layout>
+
+  <time-layout time-coordinate="local" summarization="12hourly">
+    <layout-key>k-p24h-n7-1</layout-key>
+      <start-valid-time period-name="Tonight">2012-05-18T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Saturday Night">2012-05-19T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Sunday Night">2012-05-20T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Monday Night">2012-05-21T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Tuesday Night">2012-05-22T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Wednesday Night">2012-05-23T18:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Thursday Night">2012-05-24T18:00:00-07:00</start-valid-time>
+  </time-layout>
+
+  <time-layout time-coordinate="local" summarization="12hourly">
+    <layout-key>k-p24h-n7-2</layout-key>
+      <start-valid-time period-name="Saturday">2012-05-19T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Sunday">2012-05-20T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Monday">2012-05-21T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Tuesday">2012-05-22T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Wednesday">2012-05-23T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Thursday">2012-05-24T06:00:00-07:00</start-valid-time>
+      <start-valid-time period-name="Friday">2012-05-25T06:00:00-07:00</start-valid-time>
+  </time-layout>
+
+
+  <parameters applicable-location="point1">
+
+    <temperature type="minimum" units="Fahrenheit" time-layout="k-p24h-n7-1">
+      <name>Daily Minimum Temperature</name>
+        <value>34</value>
+        <value>40</value>
+        <value>41</value>
+        <value>35</value>
+        <value>31</value>
+        <value>32</value>
+        <value>37</value>
+    </temperature>
+
+    <temperature type="maximum" units="Fahrenheit" time-layout="k-p24h-n7-2">
+      <name>Daily Maximum Temperature</name>
+        <value>49</value>
+        <value>47</value>
+        <value>44</value>
+        <value>41</value>
+        <value>40</value>
+        <value>45</value>
+        <value>47</value>
+    </temperature>
+
+    <probability-of-precipitation  type="12 hour" units="percent" time-layout="k-p12h-n14-1">
+      <name>12 Hourly Probability of Precipitation</name>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value>70</value>
+        <value>70</value>
+        <value>80</value>
+        <value>80</value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+        <value xsi:nil="true"></value>
+    </probability-of-precipitation>
+
+    <weather time-layout="k-p12h-n14-1">
+      <name>Weather Type, Coverage, Intensity</name>
+        <weather-conditions weather-summary="Mostly Cloudy"/>
+        <weather-conditions weather-summary="Partly Sunny"/>
+        <weather-conditions weather-summary="Mostly Cloudy"/>
+        <weather-conditions weather-summary="Rain Likely"/>
+        <weather-conditions weather-summary="Rain Likely"/>
+        <weather-conditions weather-summary="Rain"/>
+        <weather-conditions weather-summary="Rain"/>
+        <weather-conditions weather-summary="Snow"/>
+        <weather-conditions weather-summary="Snow Likely"/>
+        <weather-conditions weather-summary="Snow Likely"/>
+        <weather-conditions weather-summary="Snow Likely"/>
+        <weather-conditions weather-summary="Chance Snow"/>
+        <weather-conditions weather-summary="Chance Showers"/>
+        <weather-conditions weather-summary="Chance Showers"/>
+    </weather>
+
+    <conditions-icon type="forecast-NWS" time-layout="k-p12h-n14-1">
+      <name>Conditions Icon</name>        <icon-link>http://forecast.weather.gov/images/wtf/nbkn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/bkn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nbkn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra70.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/ra80.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nra80.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nsn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/sn.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nshra.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/shra.jpg</icon-link>
+    </conditions-icon>
+
+    <wordedForecast time-layout="k-p12h-n14-1" dataSource="sewNetcdf" wordGenerator="markMitchell">
+      <name>Text Forecast</name>
+        <text>Mostly cloudy, with a low around 34. Light and variable wind. </text>
+        <text>Partly sunny, with a high near 49. Light east southeast wind. </text>
+        <text>Mostly cloudy, with a low around 40. Northeast wind at 6 mph becoming southeast. </text>
+        <text>Rain likely, mainly after 11am.  Cloudy, with a high near 47. South southeast wind between 6 and 10 mph.  Chance of precipitation is 70%.</text>
+        <text>Rain likely.  Cloudy, with a low around 41. South southeast wind between 5 and 8 mph.  Chance of precipitation is 70%.</text>
+        <text>Rain.  High near 44.   Chance of precipitation is 80%.</text>
+        <text>Rain showers.  Low around 35.   Chance of precipitation is 80%.</text>
+        <text>Snow showers.  Cloudy, with a high near 41.  </text>
+        <text>Snow showers likely.  Cloudy, with a low around 31.  </text>
+        <text>Snow showers likely.  Cloudy, with a high near 40.  </text>
+        <text>Snow showers likely.  Cloudy, with a low around 32.  </text>
+        <text>A chance of snow showers.  Cloudy, with a high near 45.  </text>
+        <text>A chance of showers.  Cloudy, with a low around 37.  </text>
+        <text>A chance of showers.  Cloudy, with a high near 47.  </text>
+    </wordedForecast>
+
+</parameters>
+</data>
+<data type="current observations">
+	<location>
+		<location-key>point1</location-key>
+		<point latitude="" longitude=""/>
+		<area-description>NA, </area-description>
+		<height datum="mean sea level" height-units="feet"></height>
+	</location>
+	<moreWeatherInformation applicable-location="point1">http://www.nws.noaa.gov/data/obhistory/BAK42.html</moreWeatherInformation>	<time-layout time-coordinate="local">	<layout-key>k-p1h-n1-1</layout-key>	<start-valid-time period-name="current">T-00:00</start-valid-time>	</time-layout>	<parameters applicable-location="point1">		<temperature type="apparent" units="Fahrenheit" time-layout="k-p1h-n1-1">			<value>0</value>		</temperature>		<temperature type="dew point" units="Fahrenheit" time-layout="k-p1h-n1-1">			<value>0</value>		</temperature>		<humidity type="relative" time-layout="k-p1h-n1-1">			<value>0</value>		</humidity>		<weather time-layout="k-p1h-n1-1">			<name>Weather Type, Coverage, Intensity</name>			<weather-conditions weather-summary=""/>			<weather-conditions>				<value>					<visibility units="statute miles">NA</visibility>				</value>			</weather-conditions>		</weather>		<conditions-icon type="forecast-NWS" time-layout="k-p1h-n1-1">			<name>Conditions Icon</name>			<icon-link>http://forecast.weather.gov/images/wtf/NULL</icon-link>		</conditions-icon>		<direction type="wind" units="degrees true" time-layout="k-p1h-n1-1">			<value>NA</value>		</direction>		<pressure type="barometer" units="inches of mercury" time-layout="k-p1h-n1-1">			<value>NA</value>		</pressure>		<wind-speed type="gust" units="knots" time-layout="k-p1h-n1-1">			<value>NA</value>		</wind-speed>		<wind-speed type="sustained" units="knots" time-layout="k-p1h-n1-1">			<value>NA</value>		</wind-speed>	</parameters></data>
+</dwml>

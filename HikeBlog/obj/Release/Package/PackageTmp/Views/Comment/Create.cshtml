@@ -1,0 +1,42 @@
+﻿@model HikeBlog.Models.Comment
+@{
+	Layout = null;
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+<div class="createComment">
+	@using (Html.BeginForm("Create", "Comment"))
+ {
+		@Html.ValidationSummary(true)
+
+		<fieldset style="margin-right: 20px;">
+			<h3 class="commentHeader">
+				Leave a Comment</h3>
+			@Html.HiddenFor(model => model.PostID)
+			<div>
+				@Html.LabelFor(model => model.Name)
+			</div>
+			<div>
+				@Html.EditorFor(model => model.Name)
+				@Html.ValidationMessageFor(model => model.Name)
+			</div>
+			<div>
+				@Html.LabelFor(model => model.EmailAddress)
+			</div>
+			<div>
+				@Html.EditorFor(model => model.EmailAddress)
+				@Html.ValidationMessageFor(model => model.EmailAddress)
+			</div>
+			<div>
+				@Html.LabelFor(model => model.Content)
+			</div>
+			<div>
+				@Html.EditorFor(model => model.Content, new { @rows = 10 })
+				@Html.ValidationMessageFor(model => model.Content)
+			</div>
+			<p>
+				<input type="submit" value="Submit Comment" class="button" />
+			</p>
+		</fieldset>
+ }
+</div>

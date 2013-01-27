@@ -1,0 +1,51 @@
+﻿@{
+	ViewBag.Title = "Laura Emily Jacobsen - About";
+	Layout = "~/Views/Shared/_AboutLayout.cshtml";
+}
+<div id="aboutpage">
+	<h2>
+		About Me</h2>
+	<img class="blogPic" alt="Paul and Laura snowshoeing at Paradise" style="display: block;
+		float: right; margin-left: 20px;" src="../../Content/images/UsRainier.jpg" />
+	<p>
+		I'm a software developer with the travel bug. Born and raised in Sitka, Alaska,
+		I've lived in Boston, Aix-en-Provence, New York City, Paris, and London. 
+		
+	For the
+		last few years, my home has been Seattle, where the best thing to do is get out
+		of the city and go hiking.
+	</p>
+	<p>
+		On a sunny weekend, you can find me in the mountains; when it rains, I'm at home
+		reading guidebooks about places most people have never heard of.
+	</p>
+	<p>
+		This blog is my place to record images and experiences from hiking and traveling.
+		It's also my way of having fun with snazzy web development technologies that I don't
+		always get to use at work.
+	</p>
+	<p>
+		Wherever I go, I like it best when I'm with my husband <a target="_blank" href="http://www.about.me/paulbuxton">
+			Paul Buxton</a>.
+	</p>
+	<h2>
+		Techy Stuff</h2>
+	<p>
+		This site is developed in ASP.NET MVC 4. Third party components are <a href="http://flickrnet.codeplex.com/">
+			Flickr.NET</a>, <a href="http://craigsworks.com/projects/qtip2/">qTip</a>, and
+		<a href="http://www.tn3gallery.com/">TN3 Gallery</a>.
+	</p>
+	<h2>
+		Contact Me
+	</h2>
+	<p id="contact"></p>
+</div>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function () {
+		var a = 'lauraemilyjacob';
+		var b = 'sen@gmai';
+		var c = 'l.com';
+		var d = a + b + c;
+		$("#contact").html("<a href='mailto:" + d + "'>" + d + "</a>");
+	});
+</script>

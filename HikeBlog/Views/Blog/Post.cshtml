@@ -1,0 +1,51 @@
+﻿@model HikeBlog.Models.Post
+@{
+	ViewBag.Title = "Laura Jacobsen - " + Model.Title;
+}
+<h2 class="title">@Html.DisplayFor(model => model.Title)</h2>
+<p>
+	@Html.ActionLink("Photo Gallery", "Gallery", "Photo", new { id = Model.FlickrPhotosetID, postID = Model.ID }, new { @class = "galleryLabel" })
+</p>
+<div class="blogContent">
+	@Html.Raw(Model.Content)
+</div>
+<p>
+	@Html.ActionLink("Photo Gallery", "Gallery", "Photo", new { id = Model.FlickrPhotosetID, postID = Model.ID }, new { @class = "galleryLabel" })
+</p>
+
+<div class="postDate" style="float: left; clear: both;">
+	Posted on @Html.DisplayFor(model => model.DateCreated)
+</div>
+<a name="comments"></a>
+<h3 class="commentHeader" style="clear: both;">
+	Comments (@Model.Comments.Count)
+</h3>
+@foreach (var comment in Model.Comments.OrderByDescending(item => item.DateCreated))
+{
+	<div class="comment">
+		<div class="commentName">
+			@Html.DisplayFor(modelItem => comment.Name)
+		</div>
+		<div class="commentDateRight">
+			@Html.DisplayFor(modelItem => comment.DateCreated)
+		</div>
+		<div class="commentText">
+			@MvcHtmlString.Create(comment.Content.Replace(Environment.NewLine, "<br />"))
+		</div>
+		<div class="clearer">
+		</div>
+	</div>
+}
+<div>
+	@{Html.RenderAction("Create", "Comment", new { postID = Model.ID });}
+</div>
+<script type="text/javascript" language="javascript">
+	$(document).ready(function () {
+		// make links open in new tabs
+		$('.blogContent').each(function (index) {
+			$(this).find('a').each(function () {
+				$(this).attr("target", "_blank");
+			});
+		});
+	});
+</script>

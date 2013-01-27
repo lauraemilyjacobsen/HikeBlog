@@ -1,0 +1,9 @@
+﻿@model HikeBlog.Models.Post
+@{
+	ViewBag.Title = "Laura Jacobsen - " + Model.Title;
+}
+<h2 class="title">@Html.DisplayFor(model => model.Title)</h2>
+<div class="display-field">
+	@Html.Raw(Model.Content)
+</div>
+
